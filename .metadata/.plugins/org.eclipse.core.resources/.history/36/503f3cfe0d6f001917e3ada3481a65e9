@@ -1,0 +1,14 @@
+package string;
+
+public class Stringconcatenaion {
+
+	public static void main(String[] args) {
+		//by operator
+		String s= "hai"+"kadima";
+		System.out.println(s);
+		//by operator cont
+		String s1=50+30+"haikadima"+14+13;
+		System.out.println(s1);
+	}
+
+}

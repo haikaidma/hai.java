@@ -1,0 +1,79 @@
+package inform;
+
+import java.util.Scanner;
+
+public class Date {
+	private int ngay,thang,nam;
+	public int getNgay() {
+		return this.ngay;
+	}
+	public void setNgay(int ngay) {
+		this.ngay = ngay;
+	}
+	public int getThang() {
+		return this.thang;
+	}
+	public void setThang(int thang) {
+		if(thang <= 0 || thang >12)
+			this.thang = 1;
+		else
+			this.thang = thang;
+	}
+	public int getNam() {
+		return this.nam;
+	}
+	public void setNam(int nam) {
+		if( nam <= 0 || nam >5000)
+			this.nam = 1;
+		else
+			this.nam = nam;
+		
+	}
+	public   Date() {
+		
+	}
+	public   Date(int ngay, int thang, int nam) {
+		setNgay(ngay);
+		setThang(thang);
+		setNam(nam);
+	}
+	public void input()
+	{
+		Scanner in = new Scanner(System.in);
+		System.out.print("\t Ngay:");
+		this.setNgay(in.nextInt());
+		System.out.print("\t Thang:");
+		this.setThang(in.nextInt());
+		System.out.print("\t Nam:");
+		this.setNam(in.nextInt());
+	}
+	public String toString() {
+		String s =this.getNam()+"/"+this.getThang()+"/"+this.getNam();
+		return s;
+	}
+	public static void main(String[] args) {
+		Date n1 = new Date(4,7,2000);
+		n1.toString();
+
+/*	n1.month = 2;
+//		n1.year = 2016;
+		n1.setYear(2016);
+		n1.setMonth(2);
+		System.out.println(n1.NumberofDay());
+		Date n2 = new Date();
+		n2.setYear(1990);
+		n2.setMonth(3);
+//		n2.month = 3;
+//		n2.year = 1991;
+		System.out.println(n2.NumberofDay());
+		Date n3 = new Date();
+		n2.setYear(1990);
+		n2.setMonth(2);
+//		n3.month = 4;
+//		n3.year = 1990;
+		System.out.println(n3.NumberofDay());*/
+
+	}
+}
+
+

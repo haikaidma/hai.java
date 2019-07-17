@@ -1,0 +1,62 @@
+package employee;
+import java.util.Scanner;
+public class ArrayOfemployee {
+	private int n;
+	private Employee[] a=new Employee[100];
+	public ArrayOfemployee() {
+		
+	}
+	public ArrayOfemployee(int n) {
+		this.n=n;
+	}
+	public int getN() {
+		return this.n;
+	}
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() 
+	{
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter n: ");
+		this.setN(kb.nextInt());
+		for(int i=0;i<n;i++) 
+		{
+			System.out.println("no."+i+1);
+			System.out.println("1-Regular/2-Contract");
+			int choose=kb.nextInt();
+			if(choose==1) 
+			{
+			Employee e=new Regular();
+			e.input();//tinh da hinh
+			a[i]=e;
+			}
+			else 
+				if(choose==2) 
+				{
+				Employee e=new Contract();
+				e.input();//tinh da hinh
+				a[i]=e;
+				}
+		}
+	}
+	
+	public void output() {
+		for(int i=0;i<n;i++) {
+			a[i].output();
+		}
+	}
+	public double salaryMax() {
+		double max=a[0].ComputeSalary();
+		for(int i=0;i<n;i++) {
+			if(max<a[i].ComputeSalary())
+				max=a[i].ComputeSalary();
+		}
+		return max;}
+	public static void main(String[] args) {
+		ArrayOfemployee a=new ArrayOfemployee();
+		a.input();
+		a.output();
+	}
+
+}

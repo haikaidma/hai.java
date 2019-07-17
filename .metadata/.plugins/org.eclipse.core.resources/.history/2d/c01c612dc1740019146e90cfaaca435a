@@ -1,0 +1,38 @@
+package radio;
+import javax.swing.*;
+import java.awt.*;
+public class RadioButton extends JFrame {
+		int tam;
+		double a,b,c;
+		String s;
+		JLabel Title= new JLabel();
+		JLabel hesoa= new JLabel();
+		JLabel hesob= new JLabel();
+		JLabel hesoc= new JLabel();
+		JLabel ketqua= new JLabel();
+		
+		JTextField sa=new JTextField();
+		JTextField sb=new JTextField();
+		JTextField sc=new JTextField();
+		JTextArea kq=new JTextArea();
+		JRadioButton pt1= new JRadioButton ("phuong trinh bac 1");
+		JRadioButton pt2= new JRadioButton ("phuong trinh bac 2");
+		JButton Exit = new JButton();
+		JButton Reset = new JButton();
+		JButton Go = new JButton();
+		public RadioButton() {
+			this.getContentPane().setLayout(null);
+			Title.setBounds(new Rectangle(30,20,350,30));
+			Title.setText("giai phuong trinh bac 1va bac 2");
+			this.getContentPane().add(Title);
+			hesoa.setBounds(30,100,100,30);
+			hesoa.setText("he so a: ");
+			this.getContentPane().add(hesoa);
+			sa.setBounds(new Rectangle (120,100,30,25));
+			this.getContentPane().add(sa);
+		}
+	public static void main(String[] args) {
+		RadioButton r= new RadioButton();
+	}
+
+}

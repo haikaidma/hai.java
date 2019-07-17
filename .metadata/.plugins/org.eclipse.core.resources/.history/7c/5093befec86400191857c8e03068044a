@@ -1,0 +1,130 @@
+package candidate;
+
+import java.util.Scanner;
+
+public class ArrayOfCandidate {
+	//attribute declaration
+	private Candidate a[] = new Candidate[100];
+	private int n;
+	
+	public int getN() {
+		return n;
+	}
+	public void setN(int n) {
+		this.n=n;
+	}
+	
+	public ArrayOfCandidate() {
+		
+	}
+	public ArrayOfCandidate(int n) {
+		this.setN(n);
+	}
+	
+	//input function
+	public void input() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter Candidates: ");
+		this.setN(kb.nextInt());
+		
+		for(int i=0;i<this.n;i++) {
+			System.out.println("Student "+(i+1));
+			Candidate c = new Candidate();
+			c.input();
+			a[i]=c;
+		}
+	}
+	
+	//output funcation
+	public void output() {
+		for(int i=0; i<this.n;i++) {
+			System.out.print("Candidate "+(i+1)+" ");
+			a[i].output();
+		}
+		System.out.println();
+	}
+	
+	//student pass function
+	public void studentPass() {
+		int dem=0;
+		for(int i=0;i<this.n;i++) 
+			if(a[i].solve()>=5) dem=dem+1;
+		System.out.println("Students pass: "+dem);
+		for(int i=0;i<this.n;i++) {
+			if(a[i].solve()>=5) a[i].output();
+		}
+	}
+	
+	//print month of birth 8 function
+	public void monthOfBirth() {
+		System.out.print("Students Have Month Of Birth Is 8:");
+		int dem=0;
+		for(int i=0; i<this.n;i++) {
+			if(a[i].getDayOfBirth().getMonth()==8) {
+				dem=dem+1;
+				a[i].output();
+			}
+		}
+		if (dem==0) System.out.println(" Don't have student birth in month 8  ");
+		System.out.println();
+	}
+	
+	//remove students year of birth 2000 function
+	public void remove() {
+		System.out.println("Students after remove:");
+		for(int i=0;i<this.n;i++) {
+			if(a[i].getDayOfBirth().getYear()==2000) {
+				for(int k=i;k<n-1;k++) 
+					a[i]=a[i+1];
+				n--;
+			}
+		}
+		for(int i=0;i<this.n;i++)
+			a[i].output();
+	}
+	
+	//print students have street is NVL
+	public void streetNVL() {
+		System.out.println("Students have street is Nguyen Van Linh:");
+		for(int i=0; i<this.n;i++) {
+			if(a[i].getAddress().getStreest()== "NVL"  ) a[i].output();
+		}
+	}
+	
+	//print students have district is Hai Chau
+	public void districtHC() {
+		System.out.println("Students have district is Hai Chau: ");
+		for(int i=0;i<this.n;i++) {
+			if(a[i].getAddress().getDistrict()=="HC"	) a[i].output();
+		}
+	}
+	
+	//sort array down follow age 
+	public void sortAge() {
+		System.out.println("Students after sort follow age: ");
+		for (int i=0;i<this.n;i++) {
+			for(int j=i+1;j<this.n;j++) {
+				if(a[i].getDayOfBirth().getYear()>a[j].getDayOfBirth().getYear()) a[i]=a[j];
+				if(a[i].getDayOfBirth().getYear()==a[j].getDayOfBirth().getYear()) {
+					if(a[i].getDayOfBirth().getMonth()>a[j].getDayOfBirth().getMonth()) a[i]=a[j];
+					if(a[i].getDayOfBirth().getMonth()==a[j].getDayOfBirth().getMonth()) {
+						if(a[i].getDayOfBirth().getDay()>a[i].getDayOfBirth().getDay()) a[i]=a[j];
+					}
+				}
+			}
+		}
+		for(int i=0;i<this.n;i++)
+			a[i].output();
+	}
+	
+	public static void main(String[] args) {
+		ArrayOfCandidate arr = new ArrayOfCandidate();
+		arr.input();
+		arr.output();
+		arr.studentPass();
+		arr.monthOfBirth();
+		arr.remove();
+		arr.sortAge();
+	}
+
+}

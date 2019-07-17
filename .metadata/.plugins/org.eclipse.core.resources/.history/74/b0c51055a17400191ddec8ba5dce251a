@@ -1,0 +1,100 @@
+package radio;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+ 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+ 
+public class RadioButton extends JFrame  {
+    private JRadioButton LinearEquation, SquareEquation;
+    private JLabel lbA,lbB,lbResult;
+	private JTextField txtA,txtB,txtResult;
+	private JButton btnSolve,btnReset,btnExit;
+	private JPanel pA,pB,pResult,pBtn;
+    public RadioButton() {
+        // add main panel
+        add(createMainPanel());
+        // set display
+        setTitle("JRadioButton");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 200);
+        setLocationRelativeTo(null);
+        super.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        setVisible(true);
+        pA=new JPanel();
+		lbA=new JLabel("enter a");
+		txtA=new JTextField(10);
+		pA.add(lbA);
+		pA.add(txtA);
+		pB=new JPanel();
+		lbB=new JLabel("enter b");
+		txtB=new JTextField(10);
+		pB.add(lbB);
+		pB.add(txtB);
+		pResult=new JPanel();
+		lbResult=new JLabel("Result");
+		txtResult=new JTextField(10);
+		txtResult.setEditable(false);
+		pResult.add(lbResult);
+		pResult.add(txtResult);
+		pBtn=new JPanel();
+		btnSolve=new JButton("solve");
+		btnReset =new JButton("reset");
+		btnExit=new JButton("Exit");
+		pBtn.add(btnSolve);
+		pBtn.add(btnReset);
+		pBtn.add(btnExit);
+		super.add(txtA);
+		super.add(lbB);
+		super.add(txtB);
+		super.add(lbResult);
+		super.add(txtResult);
+		super.add(btnSolve);
+		super.add(btnReset);
+		super.add(btnExit);
+		super.validate();
+    }
+ 
+    // create main panel
+    private JPanel createMainPanel() {
+        JPanel panel = new JPanel();
+        // add two radiobutton and a label to frame
+        panel.add(LinearEquation = createRadioButton("LinearEquation", true));
+        panel.add( SquareEquation = createRadioButton("SquareEquation", false));
+        
+ 
+        // create ButtonGroup for radBoy and radGirl
+        ButtonGroup genderGroup = new ButtonGroup();
+        // add radBoy and radGirl into Group
+        genderGroup.add(LinearEquation);
+        genderGroup.add(SquareEquation);
+        return panel;
+        
+    }
+ 
+    // create a JRadioButton with name
+    private JRadioButton createRadioButton(String name, boolean select) {
+        JRadioButton r = new JRadioButton(name, select);
+        return r;
+    }
+ 
+    // create a JLabel with text
+    private JLabel createLabel(String text) {
+        JLabel lb = new JLabel(text);
+        return lb;
+    }
+
+ 
+ 
+    public static void main(String[] args) {
+        new RadioButton();
+    }
+ 
+}

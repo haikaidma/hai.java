@@ -1,0 +1,74 @@
+package shape;
+
+public class Triangle {
+	private double a,b,c;
+	public Triangle() {
+		
+	}
+	public Triangle(double aa,double bb, double cc) {
+		setA(aa);
+		setB(bb);
+		setC(cc);
+	}
+	public double getA() {
+		return a;
+	}
+	public double getB() {
+		return b;
+	}
+	public double getC() {
+		return c;
+	}
+	public void setA(double aa) {
+		if(aa<0)a=0;
+		else a=aa;
+	}
+	public void setB(double bb) {
+		if(bb<0)b=0;
+		else b=bb;}
+		public void setC(double cc) {
+			if(cc<0)c=0;
+			else c=cc;}
+	public Double area() {
+		if(a+b>c && a+c>b && b+c>a) {
+			double p=(a+b+c)/2;
+			return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+		}
+		else {
+			System.out.println("it is not triangle");
+			return null;
+		}
+	}
+
+	public Double perimeter() 
+	{
+		if(a+b>c && a+c>b && b+c>a) 
+		{
+			return a+b+c;
+	}
+		else {
+			System.out.println("it is not triangle");
+			return null;
+	}
+
+	}
+	public static void main(String[] args) {
+		Triangle t1=new Triangle() ;
+			t1.a=5;
+			t1.b=6;
+			t1.c=7;
+			System.out.println( t1.area());
+			System.out.println(t1.perimeter());
+
+		Triangle t2=new Triangle() ;
+			t2.a=7;
+			t2.b=8;
+			t2.c=9;
+			System.out.println(t2.area());
+			System.out.println(t2.perimeter());
+			Triangle t3=new Triangle(3,4,5) ;
+			System.out.println(t3.a);
+			System.out.println(t3.b);
+			
+	}
+}

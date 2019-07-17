@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Git/src/swing/SumGui.java&apos;" deleteContents="false" description="Delete resource &apos;Git/src/swing/SumGui.java&apos;" element1="/Git/src/swing/SumGui.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1557621379832"/>&#x0A;<refactoring comment="Delete resource &apos;Git/src/radio/RadioButton.java&apos;" deleteContents="false" description="Delete resource &apos;Git/src/radio/RadioButton.java&apos;" element1="/Git/src/radio/RadioButton.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1557666784700"/>
+</session>

@@ -1,0 +1,10 @@
+package shape;
+
+public class ArrayOfShape {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

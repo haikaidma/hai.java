@@ -1,0 +1,11 @@
+package inform;
+import java.util.Scanner;
+public class ArrayOfPerson {
+	private int n;
+	private Person []a=new Person[100];
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

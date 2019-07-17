@@ -1,0 +1,287 @@
+package quanlynhankhau;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.net.URL;
+public class QuanLyNhanKhau extends JFrame implements ActionListener,KeyListener,MouseListener{
+	JButton btnAdd,btnEdit,btnDelete,btnSave,btnOpen;
+	private JFileChooser fc = new JFileChooser();
+	JLabel lbMaNhanKhau,lbCmnd,lbQueQuan,lbHoVaTen,lbNoiSinh,lbDanToc,lbNgheNghiep,lbNgaySinh
+			,lbTrinhDo,lbPhone,lbQuocTich,lbSoDienThoai,lbGioiTinh,lbTieuDe;
+	JTextField txtMaNhanKhau,txtCmnd,txtQueQuan,txtHoVaTen,txtNoiSinh,txtDanToc,txtNgheNghiep,txtNgaySinh
+	,txtTrinhDo,txtPhone,txtQuocTich,txtSoDienThoai,txtGioiTinh;
+	String[] nation = new String[] {"","An Giang","Ba Ria - Vung Tau","Bac Giang","Bac Kan","Bac Ninh",
+			"Ben Tre","Binh Dinh","Binh Duong","Binh Phuoc","Binh Thuan","Ca Mau","Cao Bang","Dak Lak",
+			"Dak Nong" , "Dien Bien","Dong Nai","Dong Thap","Gia Lai","Ha Giang","Ha Nam","Ha Tinh",
+			"Hai Duong","Hau Giang","Hoa Binh","Hung Yen","Khanh Hoa","Kien Giang","Kon Tum",
+			"Lai Chau","Lam Dong","Lang Son","Lao Cai","Long An","Nam Dinh","Nghe An","Ninh Binh","Ninh Thuan",
+			"Phu Tho","Quang Binh","Quang Nam","Quang Ngai","Quang Ninh","Quang Tri","Soc Trang","Son La",
+			"Tay Ninh","Thai Binh","Thai Nguyen","Thanh Hoa","TT-Hue","Tien Giang","Tra Vinh","Tuyen Quang","Vinh Long",
+			"Vinh Phuc","Yen Bai","Phu Yen","Can Tho","Da Nang","Hai Phong","Ha Noi","Ho Chi Minh"};
+	JComboBox<String> cityList; 
+	JRadioButton nam,nu,opt;
+	ButtonGroup btnGioiTinh,btnGender;
+	
+	JTable table,tableList;
+	JScrollPane scrollPane = new JScrollPane();
+	Vector tableTitle = new Vector();
+	Vector tableRecords = new Vector();
+	ImageIcon del = new ImageIcon("images/delete.png");
+	ImageIcon add = new ImageIcon("images/add.png");
+	ImageIcon sav = new ImageIcon("images/sav.png");
+	
+	public QuanLyNhanKhau()
+	{
+		//1. Initialization
+		super("Human Management");
+		setLocation(100, 100);
+		setSize(new Dimension(1000,500));
+		setLayout(null);
+		
+		lbTieuDe = new JLabel("Quản Lý Nhân Khẩu Đà Nẵng");
+		lbTieuDe.setFont(new Font("Arial",3,16));
+		lbTieuDe.setBounds(new Rectangle(50,10,250,50));
+		add(lbTieuDe);
+		
+		//tao bang
+		tableList = new JTable();
+		scrollPane.setViewportView(tableList);
+		scrollPane.setBounds(new Rectangle(50,100,850,150));
+		tableTitle.add("Mã Nhân Khẩu");
+        tableTitle.add("Họ Và Tên");
+        tableTitle.add("Số CMND");
+        tableTitle.add("Quê Quán");
+        tableTitle.add("Nơi Sinh");
+        tableTitle.add("Dân Tộc");
+        tableTitle.add("Nghề Nghiệp");
+        tableTitle.add("Ngày Sinh");
+        tableTitle.add("Giới Tính");
+        tableTitle.add("Số Điện Thoại");
+        tableList.setModel(new DefaultTableModel(tableRecords, tableTitle));
+		add(scrollPane);
+		
+		
+		lbMaNhanKhau = new JLabel("Mã Nhân Khẩu");
+		lbMaNhanKhau.setBounds(new Rectangle(50,300,85,20));
+		add(lbMaNhanKhau);
+		txtMaNhanKhau = new JTextField();
+		txtMaNhanKhau.setBounds(new Rectangle(135,300,100,20));
+		add(txtMaNhanKhau);
+		
+		
+		//Ma Nhan Khau CMND Que Quan
+		lbCmnd = new JLabel("Số CMND");
+		lbCmnd.setBounds(new Rectangle(255,300,70,20));
+		add(lbCmnd);
+		txtCmnd = new JTextField();
+		txtCmnd.setBounds(new Rectangle(315,300,100,20));
+		add(txtCmnd);
+		lbQueQuan = new JLabel("Quê Quán");
+		lbQueQuan.setBounds(new Rectangle(430,300,70,20));
+		add(lbQueQuan);
+		cityList = new JComboBox<>(nation);
+		cityList.setBounds(new Rectangle(500,300,100,20));
+		add(cityList);
+		
+		//Ho va Ten  Noi Sinh Dan Toc
+		lbHoVaTen = new JLabel("Họ và Tên");
+		lbHoVaTen.setBounds(new Rectangle(50,330,85,20));
+		add(lbHoVaTen);
+		txtHoVaTen = new JTextField();
+		txtHoVaTen.setBounds(new Rectangle(135,330,100,20));
+		add(txtHoVaTen);
+		lbNoiSinh = new JLabel("Nơi Sinh");
+		lbNoiSinh.setBounds(new Rectangle(255,330,100,20));
+		add(lbNoiSinh);
+		txtNoiSinh = new JTextField();
+		txtNoiSinh.setBounds(new Rectangle(315,330,100,20));
+		add(txtNoiSinh);
+		lbDanToc = new JLabel("Dân Tộc");
+		lbDanToc.setBounds(new Rectangle(430,330,70,20));
+		add(lbDanToc);
+		txtDanToc = new JTextField();
+		txtDanToc.setBounds(new Rectangle(500,330,100,20));
+		add(txtDanToc);
+		
+		//Nghe nghiep Ngay Sinh Gioi Tinh
+		lbNgheNghiep = new JLabel("Nghề Nghiệp");
+		lbNgheNghiep.setBounds(new Rectangle(50,360,85,20));
+		add(lbNgheNghiep);
+		txtNgheNghiep = new JTextField();
+		txtNgheNghiep.setBounds(new Rectangle(135,360,100,20));
+		add(txtNgheNghiep);
+		lbNgaySinh = new JLabel("Ngày Sinh");
+		lbNgaySinh.setBounds(new Rectangle(255,360,100,20));
+		add(lbNgaySinh);
+		txtNgaySinh = new JTextField();
+		txtNgaySinh.setBounds(new Rectangle(315,360,100,20));
+		add(txtNgaySinh);
+		lbGioiTinh = new JLabel("Giới Tính");
+		lbGioiTinh.setBounds(new Rectangle(430,360,70,20));
+		add(lbGioiTinh);
+		nam = new JRadioButton("Nam");
+		nam.setBounds(new Rectangle(500,360,55,20));
+		nu = new JRadioButton("Nữ");
+		nu.setBounds(new Rectangle(555,360,50,20));
+		opt = new JRadioButton("Tùy Chọn");
+		opt.setBounds(new Rectangle(500,380,100,20));
+		add(nam);
+		add(nu);
+		add(opt);
+		btnGioiTinh = new ButtonGroup();
+		btnGioiTinh.add(nam);
+		btnGioiTinh.add(nu);
+		btnGioiTinh.add(opt);
+		
+		//So dien thoai
+		lbSoDienThoai = new JLabel("Số điện thoại");
+		lbSoDienThoai.setBounds(new Rectangle(50,390,100,20));
+		add(lbSoDienThoai);
+		txtSoDienThoai = new JTextField();
+		txtSoDienThoai.setBounds(new Rectangle(135,390,100,20));
+		add(txtSoDienThoai);
+		
+		btnAdd = new JButton("Add");
+		btnAdd.setIcon(add);
+		btnAdd.setBounds(new Rectangle(630,300,80,50));
+		btnAdd.addActionListener(this);
+		add(btnAdd);
+		btnEdit = new JButton("Edit");
+		btnEdit.setBounds(new Rectangle(725,300,80,50));
+		btnEdit.addActionListener(this);
+		add(btnEdit);
+		btnDelete = new JButton("Delete");
+		btnDelete.setIcon(del);
+		btnDelete.setBounds(new Rectangle(820,300,80,50));
+		btnDelete.addActionListener(this);
+		add(btnDelete);
+		btnSave = new JButton("Save");
+		btnSave.setBounds(new Rectangle(630,370,80,50));
+		btnSave.addActionListener(this);
+		add(btnSave);
+		btnOpen = new JButton("Open");
+		btnOpen.setBounds(new Rectangle(725,370,80,50));
+		btnOpen.addActionListener(this);
+		add(btnOpen);
+		//tableList.addMouseListener(this);
+		
+		setVisible(true);
+		setResizable(false);
+	}
+	public static void main(String[] args) {
+		QuanLyNhanKhau huy = new QuanLyNhanKhau();
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnAdd)
+		{
+			Vector record = new Vector();
+			record.add(txtMaNhanKhau.getText());
+			record.add(txtHoVaTen.getText());
+			record.add(txtCmnd.getText());
+			record.add(cityList.getSelectedItem().toString());
+			record.add(txtNoiSinh.getText());
+			record.add(txtDanToc.getText());
+			record.add(txtNgheNghiep.getText());
+			record.add(txtNgaySinh.getText());
+			//record.add(txtNgaySinh.getText());
+			if(nam.isSelected())
+				record.add("Nam");
+			else if(nu.isSelected())
+				record.add("Nữ");
+			else 
+				record.add("");
+			record.add(txtSoDienThoai.getText());
+			tableRecords.add(record);
+			tableList.setModel(new DefaultTableModel(tableRecords,tableTitle));
+			//JOptionPane.showMessageDialog(rootPane, "Thêm thành công");
+			btnGioiTinh.clearSelection();
+			txtMaNhanKhau.setText("");
+			txtHoVaTen.setText("");
+			txtCmnd.setText("");
+			//txtQueQuan.setText("");
+			txtNoiSinh.setText("");
+			txtDanToc.setText("");
+			txtNgheNghiep.setText("");
+			txtNgaySinh.setText("");
+			txtSoDienThoai.setText("");
+			txtMaNhanKhau.requestFocus();
+		}
+		if(e.getSource() == btnDelete)
+		{
+			int iDongDaChon = tableList.getSelectedRow();
+            if (iDongDaChon == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn record cần xóa");
+            } else {
+                Vector vDongDaChon = (Vector) tableRecords.get(iDongDaChon);
+                String idCuaDongDaChon = vDongDaChon.get(0).toString();
+                if (JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa dòng đã chọn có id: " + idCuaDongDaChon, "Lua chon", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    tableRecords.remove(iDongDaChon);
+                    tableList.setModel(new DefaultTableModel(tableRecords, tableTitle));
+                }
+            }
+		}
+		if(e.getSource()==btnSave) {
+			/*JFileChooser c = new JFileChooser();
+			int rVal = c.showSaveDialog(null);
+			if (rVal == JFileChooser.APPROVE_OPTION) {
+			     String filename = c.getSelectedFile().getName();
+			     String dir = c.getCurrentDirectory().toString();
+			     String filePath = dir+"\\"+filename;
+			    
+			 }*/
+			JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+			int returnValue = jfc.showOpenDialog(null);
+			// int returnValue = jfc.showSaveDialog(null);
+
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				File selectedFile = jfc.getSelectedFile();
+				System.out.println(selectedFile.getAbsolutePath());
+		}
+		if(e.getSource()==btnOpen) {
+			JFileChooser c = new JFileChooser();
+			int rVal = c.showOpenDialog(null);
+			if (rVal == JFileChooser.APPROVE_OPTION) {
+			     String filename = c.getSelectedFile().getName();
+			     String dir = c.getCurrentDirectory().toString();
+			     String filePath = dir+"\\"+filename;
+			 }
+		}
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+}

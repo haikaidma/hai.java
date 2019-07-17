@@ -1,0 +1,6 @@
+ circle : 314.1592653589793
+ square : 64.0
+ square : 36.0
+ rectangle : 15.0
+ triangle : 6.0
+ cylinder : 0.0

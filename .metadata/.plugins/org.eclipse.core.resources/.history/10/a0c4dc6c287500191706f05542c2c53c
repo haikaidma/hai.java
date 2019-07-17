@@ -1,0 +1,120 @@
+package radio;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class RadioButton extends JFrame {
+		int tam;
+		double a,b,c,xx1,xx2,x1,x2,denta;
+		String s;
+		JLabel Title= new JLabel();
+		JLabel hesoa= new JLabel();
+		JLabel hesob= new JLabel();
+		JLabel hesoc= new JLabel();
+		JLabel ketqua= new JLabel();
+		
+		JTextField sa=new JTextField();
+		JTextField sb=new JTextField();
+		JTextField sc=new JTextField();
+		JTextArea kq=new JTextArea();
+		JRadioButton pt1= new JRadioButton ("phuong trinh bac 1");
+		JRadioButton pt2= new JRadioButton ("phuong trinh bac 2");
+		JButton Exit = new JButton();
+		JButton Reset = new JButton();
+		JButton Go = new JButton();
+		ButtonGroup Group1= new ButtonGroup();
+		public RadioButton() {
+			this.getContentPane().setLayout(null);
+			Title.setBounds(new Rectangle(30,20,350,30));
+			Title.setText("giai phuong trinh bac 1va bac 2");
+			this.getContentPane().add(Title);
+			hesoa.setBounds(new Rectangle(30,100,100,30));
+			hesoa.setText("he so a: ");
+			this.getContentPane().add(hesoa);
+			sa.setBounds(new Rectangle (120,100,30,25));
+			this.getContentPane().add(sa);
+			hesob.setBounds(30,100,100,30);
+			hesob.setText("he so b: ");
+			this.getContentPane().add(hesob);
+			sb.setBounds(new Rectangle (120,100,30,25));
+			this.getContentPane().add(sb);
+			hesoc.setBounds(new Rectangle(30,100,100,30));
+			hesoc.setText("he so c: ");
+			this.getContentPane().add(hesoc);
+			sc.setBounds(new Rectangle (120,100,30,25));
+			this.getContentPane().add(sc);
+			ketqua.setBounds(new Rectangle (260,100,100,30));
+			ketqua.setText("ket qua");
+			this.getContentPane().add(ketqua);
+			kq.setBounds(new Rectangle(190,100,100,30));
+			this.getContentPane().add(kq);
+			pt1.setBounds(new Rectangle(30,220,160,30));
+			this.getContentPane().add(pt1);
+			pt2.setBounds(new Rectangle(30,220,160,30));
+			this.getContentPane().add(pt2);
+			Go.setBounds(new Rectangle(30,260,100,30));
+			Go.setText("GO");
+			this.getContentPane().add(Go);
+			Reset.setBounds(new Rectangle(30,260,100,30));
+			Reset.setText("Reset");
+			this.getContentPane().add(Reset);
+			Exit.setBounds(new Rectangle(30,260,100,30));
+			Exit.setText("Exit");
+			this.getContentPane().add(Exit);
+			Group1.add(pt1);
+			Group1.add(pt2);
+			Radio k= new Radio();
+			pt1.addItemListener(k);
+			pt2.addItemListener(k);
+			Button l= new Button();
+			Go.addActionListener(l);
+			Reset.addActionListener(l);
+			Exit.addActionListener(l);
+		}
+		public class Radio implements ItemListener
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getItem()==pt1) {
+					tam=1;
+				sc.enable(false);
+			}	else 
+			{
+				tam=2;
+			sc.enable(true);
+			}
+			}
+		}
+		public class Button implements ActionListener{
+			public void actionPerformed(ActionEvent hai) {
+				RadioButton n= new RadioButton();
+				if(hai.getSource()==Exit) {
+					System.exit(0);
+					n.dispose();
+				}
+				if(hai.getSource()==Reset) {
+					sa.setText("");
+					sb.setText("");
+					sc.setText("");
+					kq.setText("");
+				}
+				if(hai.getSource()==Go&&tam==1) {
+					a=	Double.parseDouble(sa.getText());
+					b= Double.parseDouble(sb.getText());
+					if(a==0) 
+						kq.setText("pt vo nghiem");
+						else
+						{
+							xx1=(-b)/a;
+							s=String.valueOf(xx1);
+							kq.setText("pt co nghiem:"+s);
+						}
+					}
+				}
+			}
+	public static void main(String[] args) {
+		RadioButton r= new RadioButton();
+		r.setSize(400,360);
+		r.show();
+	}
+
+		}

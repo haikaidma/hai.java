@@ -1,0 +1,20 @@
+package shape;
+
+public class Shape {
+	public  double area() {
+		return area();
+	 }
+	public double perimeter() {
+		return perimeter();
+	}
+	public void input() {
+		
+	}
+	public void output() {
+		
+	}
+	public static void main(String[] args) {
+                                                        
+	}
+
+}

@@ -1,0 +1,28 @@
+package shape;
+import java.util.*;
+public class ArrayOfShape {
+	private int n;
+	private Shape []a =new Shape[100];
+	public ArrayOfShape()
+	{
+		
+	}
+	public ArrayOfShape(int n) {
+		this.n=n;
+	}
+	public int getN() {
+		return this.n;
+	}
+	public void setN() {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb=new Scanner(System.in);
+		this.setN(kb.nextInt());
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

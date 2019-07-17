@@ -1,0 +1,35 @@
+package employee;
+import java.util.Scanner;
+public class Contract extends Employee{
+	private double gradesalary;
+	public Contract() {
+		
+	}
+	public Contract(double gradesalary,String fullName,String phoneNumber,boolean gender,Address add,DayOfBirth dob, String id, String position,double allowance) {
+		super();
+		this.setGradesalary(gradesalary);
+	}
+	public double getGradesalary() {
+		return this.gradesalary;
+	}
+	public void setGradesalary(double gradesalary) {
+		this.gradesalary=gradesalary;
+	}
+	public void input() {
+		Scanner h=new Scanner(System.in);
+		System.out.println("enter gardesalary:");
+		this.setGradesalary(h.nextDouble());
+		//super.input();
+	}
+@Override
+	public void output() {
+		System.out.println("garadesalary:"+this.getGradesalary());
+		//super.output();
+	}
+	public static void main(String[] args) {
+		Contract c=new Contract();
+		c.input();
+		c.output();
+	}
+
+}

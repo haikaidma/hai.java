@@ -1,0 +1,6 @@
+circle 10
+rectangle 3 5
+square 6
+square 8
+cylinder 13 7
+triangle 3 4 5

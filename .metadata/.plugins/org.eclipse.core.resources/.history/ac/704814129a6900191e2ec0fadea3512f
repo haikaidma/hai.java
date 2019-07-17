@@ -1,0 +1,56 @@
+package shape;
+import java.util.*;
+public class ArrayOfShape {
+	private int n;
+	private Shape []a =new Shape[100];
+	public ArrayOfShape()
+	{
+		
+	}
+	public ArrayOfShape(int n) {
+		this.n=n;
+	}
+	public int getN() {
+		return this.n;
+	}
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb=new Scanner(System.in);
+		this.setN(kb.nextInt());
+		for(int i=0;i<n;i++) {
+			System.out.println("no."+(i+1));
+			System.out.println("1-circle/2-triangle/3-rectangle");
+			int choose =kb.nextInt();
+			if(choose==1) {
+				Shape s=new Circle();
+				s.input();
+				a[i]=s;
+			}
+			else 
+				if(choose ==2) {
+				Shape s=new Triangle();
+					s.input();
+					a[i]=s;
+			}
+				else 
+					if(choose==3) {
+						Shape s=new Rectangle();
+						s.input();
+						a[i]=s;
+			}
+		}
+	}
+	public void output() {
+		for(int i=0;i<n;i++) {
+			a[i].output();
+		}
+	}
+	public static void main(String[] args) {
+		ArrayOfShape a=new ArrayOfShape();
+		a.input();
+		a.output();
+	}
+
+}

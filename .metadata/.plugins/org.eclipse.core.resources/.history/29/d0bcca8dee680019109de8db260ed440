@@ -1,0 +1,78 @@
+package fix;
+
+import java.util.Scanner;
+
+public class Person {
+	private String fullName,phoneNumber;
+	private boolean gender;
+	private Address add=new Address();
+	private DayOfBirth dob=new DayOfBirth();
+	public Person() {
+		this.fullName="";
+		this.phoneNumber="";
+	}
+	public Person(String f,boolean g,String p,Address add,DayOfBirth dob){
+		setFullName(f);
+		setGender(g);
+		setPhoneNumber(p);
+		setAddress(add);
+		setDayOfBirth(dob);
+	}
+	public String getFullName() {
+		return this.fullName;
+	}
+	public boolean getGender() {
+		return this.gender;
+	}
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+	public Address getAdd() {
+		return this.add;
+	}
+	public DayOfBirth getDob() {
+		return this.dob;
+	}
+	public void setFullName(String f) {
+		this.fullName=f;
+	}
+	public void setGender(boolean g) {
+		this.gender=g;
+	}
+	public void setPhoneNumber(String p) {
+		this.phoneNumber=p;
+	}
+	public void setAddress(Address add) {
+		this.setAddress(add);
+	}
+
+	public void setDayOfBirth(DayOfBirth dob) {
+		this.setDayOfBirth(dob);}
+	public void input() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter Fullname :");
+		this.setFullName(kb.nextLine());	
+		System.out.println("Enter Gender :");
+		this.setGender(kb.next().equals("male")? true : false); 			
+		System.out.println("Enter Phonenumber :");
+		this.setPhoneNumber(kb.next());	
+		System.out.println("Enter Address :");
+		add.input();
+		System.out.println("Enter dayOfBirth");
+		dob.input();
+	}
+	public void output() {
+		System.out.println(this.fullName );
+		System.out.println(this.gender );
+		System.out.println(this.phoneNumber );
+		System.out.println(this.add);
+		add.output();
+		System.out.println(this.dob);
+		dob.output();}
+	public static void main(String[] args) {
+		Person p=new Person();
+		p.input();
+		p.output();
+	}
+
+}

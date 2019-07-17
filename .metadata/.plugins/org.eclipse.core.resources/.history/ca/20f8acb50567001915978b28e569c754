@@ -1,0 +1,106 @@
+package person;
+
+import java.util.Scanner;
+
+public class Person {
+	//khai bao thuoc tinh
+	private String fullName;
+	private boolean gender;
+	private String phoneNumber;
+	private Address add;
+	private DayOfBirth dob;
+	//ham khoi tao khong doi so
+	public Person() {
+		this.fullName="";
+		this.phoneNumber="";
+	}
+	public Person(String f,boolean g,String p,Address add,DayOfBirth dob){
+		setFullName(f);
+		setGender(g);
+		setPhoneNumber(p);
+		setAddress(add);
+		setDayOfBirth(dob);
+	}
+	public String getFullName() {
+		return this.fullName;
+	}
+	public boolean getGender() {
+		return this.gender;
+	}
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+	public Address getAdd() {
+		return this.add;
+	}
+	public DayOfBirth getDob() {
+		return this.dob;
+	}
+	public void setFullName(String f) {
+		this.fullName=f;
+	}
+	public void setGender(boolean g) {
+		this.gender=g;
+	}
+	public void setPhoneNumber(String p) {
+		this.phoneNumber=p;
+	}
+	public void setAddress(Address add) {
+		this.setAddress(add);
+	}
+
+	public void setDayOfBirth(DayOfBirth dob) {
+		this.setDayOfBirth(dob);
+	}
+	//cai dat cac phuong thuc
+	public void input() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter Fullname :");
+		this.setFullName(kb.nextLine());	
+		System.out.println("Enter Gender :");
+		this.setGender(kb.next().equals("male")? true : false); 			
+		System.out.println("Enter Phonenumber :");
+		this.setPhoneNumber(kb.next());	
+		System.out.println("Enter Address :");
+		add.input();
+		System.out.println("Enter dayOfBirth");
+		dob.input();
+	}
+	public void output() {
+		System.out.println(this.fullName );
+		System.out.println(this.gender );
+		System.out.println(this.phoneNumber );
+		System.out.println(this.add);
+		add.output();
+		System.out.println(this.dob);
+		dob.output();
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Person p1=new Person();
+		p1.output();
+		
+		Person B =new Person();
+		B.getFullName();
+		B.getGender();
+		B.getPhoneNumber();
+		
+		Person A=new Person();
+		A.input();
+		A.output();
+		
+		Address add=new Address();
+		add.input();
+		DayOfBirth dob=new DayOfBirth();
+		dob.input();
+		Person p2=new Person("quang",true,"0399290032",add,dob);
+		p2.output();
+		
+		/*Address add1=new Address("197","nguyen cong hoan","lien chieu","da nang");
+		Person p4=new Person("hai",false,"013244564",add1);
+		p4.output();*/
+		
+		
+	}
+
+}

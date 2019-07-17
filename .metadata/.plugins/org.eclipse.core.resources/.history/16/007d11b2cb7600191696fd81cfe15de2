@@ -1,0 +1,68 @@
+package inform;
+
+import java.util.Scanner;
+
+public class Address {
+	private String number,street,district,city;
+	public Address() {
+		this.number="";
+		this.street="";
+		this.district="";
+		this.city="";
+		
+	}
+
+	public Address(String n, String s, String d, String c)	{
+		
+		this.setNumber(n);
+		this.setStreet(s);
+		this.setDistrict(d);
+		this.setCity(c);
+	}
+	public String getNumber() {
+		return this.number;
+	}
+	public String getStreet() {
+		return this.street;
+	}
+	public String getDistrict() {
+		return this.district;
+	}
+	public String getCity() {
+		return this.city;
+	}
+	public void setNumber(String n) {
+		this.number=n;
+	}
+	public void setStreet(String s) {
+		this.street=s;
+	}
+	public void setDistrict(String d) {
+		this.district=d;
+	}
+	public void setCity(String c) {
+		this.city=c;
+	}
+	public void input() {
+		Scanner kb=new Scanner(System.in);
+		System.out.println("Enter house's number :");
+		this.setNumber(kb.nextLine());
+		System.out.println("Enter street :");
+		this.setStreet(kb.nextLine());
+		System.out.println("Enter district :");
+		this.setDistrict(kb.nextLine());
+		System.out.println("Enter city :");
+		this.setCity(kb.nextLine());
+	}
+	public String toString()  {
+		String s="";
+		return s=this.getNumber()+"/"+this.getStreet()+"/"+this.getDistrict()+"/"+this.getCity();
+	}
+	public static void main(String[] args) {
+		Address a=new Address();
+		a.input();
+
+
+	}
+
+}
